@@ -188,7 +188,18 @@ st.download_button(
     file_name="deforestation_predictions.csv",
     mime="text/csv"
 )
+# Calculate total forest loss percentage
+initial_forest = df["Forest_Area"].iloc[0]
+current_forest = selected_data["Forest_Area"].iloc[0]
 
+loss_percentage = (
+    (initial_forest - current_forest) / initial_forest
+) * 100
+
+st.metric(
+    "Total Forest Loss Percentage",
+    f"{loss_percentage:.2f}%"
+)
 st.divider()
 
 st.caption(
