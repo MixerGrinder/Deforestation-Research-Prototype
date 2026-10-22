@@ -99,7 +99,27 @@ with col3:
     st.metric("Total Forest Loss", f"{total_loss:,.0f}")
 
 st.divider()
+# Deforestation severity indicator
+st.subheader("Deforestation Severity Analysis")
 
+rate = selected_data["Deforestation_Rate"].iloc[0]
+
+if rate < 1:
+    severity = "Low"
+    st.success(f"Deforestation Severity: {severity}")
+elif rate < 3:
+    severity = "Moderate"
+    st.warning(f"Deforestation Severity: {severity}")
+else:
+    severity = "High"
+    st.error(f"Deforestation Severity: {severity}")
+
+st.caption(
+    "Severity thresholds are illustrative and "
+    "are not official environmental classifications."
+)
+
+st.divider()
 # Historical forest cover
 st.subheader("🌳 Historical Forest Cover")
 
